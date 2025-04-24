@@ -1,0 +1,631 @@
+Here's the complete GitHub Git command prompt code to set up your project BudgetPlanner, push it to GitHub, and perform contribution analysis:
+
+
+---
+
+1) Initialize & Push to GitHub
+
+:: Step 1: Create and navigate to folder
+mkdir "BudgetPlanner"
+cd "BudgetPlanner"
+
+:: Step 2: Initialize Git
+git init
+
+:: Step 3: Create initial files
+echo > index.html
+echo > style.css
+echo > script.js
+
+:: Step 4: Check status
+git status
+
+:: Step 5: Stage all files
+git add .
+
+:: Step 6: Commit the files
+git commit -m "Initial commit: Added project base files"
+
+:: Step 7: Add GitHub remote (replace with your actual GitHub repo URL)
+git remote add origin https://github.com/your-username/BudgetPlanner.git
+
+:: Step 8: Push to GitHub
+git branch -M main
+git push -u origin main
+
+
+---
+
+2) Clone and Collaborate
+
+:: On teammate's machine - clone the repo
+git clone https://github.com/your-username/BudgetPlanner.git
+
+:: Navigate into project folder
+cd BudgetPlanner
+
+:: Pull latest updates
+git pull origin main
+
+:: Check log of all commits
+git log --oneline
+
+
+---
+
+3) Contribution Analysis Git Commands
+
+:: View full commit history
+git log --oneline --graph --all
+
+:: Filter commits by author
+git log --author="Alice" --oneline
+
+:: Show all contributors and number of commits
+git shortlog -s -n
+
+:: Show latest commit by a specific contributor
+git log --author="Bob" -1
+
+:: See files modified in a specific commit
+git show --name-only <commit-hash>
+
+:: Compare branches for contributor-specific changes
+git log main..development --author="Charlie"
+
+:: View all changes made to task.js
+git log --follow -- task.js
+
+:: Export commit history to a file
+git log > commit-history.txt
+
+
+---
+
+Let me know if you’d like to automate this with a script or need help creating the remote GitHub repo!
+
+
+
+Here is the Git command-line guide to complete all 10 tasks under "Analyzing Contribution History" for your project milestone:
+
+
+---
+
+Analyzing Contribution History – Git Commands
+
+
+---
+
+1. View the entire commit history:
+
+git log --oneline --graph --all
+
+
+---
+
+2. Filter log by a specific contributor (e.g., Alice):
+
+git log --author="Alice" --oneline
+
+
+---
+
+3. Generate a list of all authors and their contributions:
+
+git shortlog -s -n
+
+-s = show number of commits
+
+-n = sort by number of commits (descending)
+
+
+
+---
+
+4. Check the most recent commit by a contributor (e.g., Bob):
+
+git log --author="Bob" -1
+
+
+---
+
+5. Identify files modified in a particular commit:
+
+git show --name-only <commit-hash>
+
+Replace <commit-hash> with the actual commit ID.
+
+
+---
+
+6. Summary: Who worked on which files
+
+Run this to create a rough summary (not perfect, but helpful):
+
+git log --pretty=format:"%an" --name-only | sort | uniq -c | sort -nr
+
+Or for file-level author data:
+
+git log --pretty=format:"%an" --name-only | awk 'NF' | sort | uniq -c
+
+
+---
+
+7. Compare two branches (main vs development) by contributor:
+
+git log main..development --author="Alice" --oneline
+
+To see all differences between main and development:
+
+git diff main..development
+
+
+---
+
+8. Track all changes made to a file (e.g., task.js):
+
+git log --follow -- task.js
+
+To include the content of changes:
+
+git log -p --follow task.js
+
+
+---
+
+9. Export the full commit history to a text file:
+
+git log > commit-history.txt
+
+
+---
+
+10. Why Contribution History Helps Team Management:
+
+Contribution analysis:
+
+Identifies active contributors and their responsibilities.
+
+Tracks who introduced what, making debugging and collaboration easier.
+
+Encourages accountability and transparency.
+
+Helps managers understand workload distribution and performance.
+
+Aids in code reviews by letting you tag the right person for context.
+
+
+
+---
+
+Let me know if you want to turn this into a PDF report or visualize the contributions graphically!
+
+
+
+Here is the complete Git command-line code for staging selected changes and managing commits effectively:
+
+
+---
+
+Staging Selected Changes – Step-by-Step Git Commands
+
+
+---
+
+1. Modify three files
+
+(Manually make changes in the following files using your editor of choice:)
+
+header.html
+
+footer.html
+
+script.js
+
+
+
+---
+
+2. View modified files
+
+git status
+
+This will show the three modified files under "Changes not staged for commit".
+
+
+---
+
+3. Stage only header.html
+
+git add header.html
+
+
+---
+
+4. View the staged changes
+
+git diff --staged
+
+This shows exactly what is about to be committed from header.html.
+
+
+---
+
+5. Commit staged changes
+
+git commit -m "Updated header structure."
+
+
+---
+
+6. Stage footer.html only
+
+git add footer.html
+
+(Leave script.js unchanged)
+
+
+---
+
+7. Commit footer.html
+
+git commit -m "Refined footer design."
+
+
+---
+
+8. Verify that script.js remains unstaged
+
+git status
+
+script.js should still show as modified but not staged.
+
+
+---
+
+9. Push all committed changes to remote
+
+git push origin main
+
+
+---
+
+10. Test selective commits (clone in new folder)
+
+cd ..
+git clone https://github.com/your-username/BudgetPlanner.git BudgetPlanner_Test
+cd BudgetPlanner_Test
+
+Then check commit log and file contents:
+
+git log --oneline
+
+
+---
+
+Let me know if you’d like to automate this in a shell script or add more selective staging techniques like git add -p (for staging parts of a file).
+
+
+
+Here’s the full set of Git command-line instructions for performing branch comparisons for QA based on your scenario:
+
+
+---
+
+Branch Comparisons for QA – Git Commands
+
+
+---
+
+1. Switch to the main branch:
+
+git checkout main
+
+
+---
+
+2. Compare main with feature-testing:
+
+git diff main..feature-testing
+
+This shows line-by-line differences between the two branches.
+
+
+---
+
+3. Identify files modified in feature-testing:
+
+git diff --name-only main..feature-testing
+
+Expected output:
+
+test.js
+config.js
+
+
+---
+
+4. Test the modified files (test.js and config.js)
+
+Manually test the changes in your development environment or using automated scripts.
+
+
+---
+
+5. Create and switch to qa-testing branch, then merge:
+
+git checkout -b qa-testing
+git merge feature-testing
+
+
+---
+
+6. Stage and commit changes after QA feedback:
+
+(After editing/testing based on QA feedback)
+
+git add .
+git commit -m "QA feedback applied: adjustments to test.js and config.js"
+
+
+---
+
+7. Push qa-testing to remote:
+
+git push -u origin qa-testing
+
+
+---
+
+8. Test qa-testing locally to confirm QA requirements:
+
+Manually run test suites or validate functionality in your dev environment.
+
+
+---
+
+9. Document differences (save diff output):
+
+git diff main..feature-testing > branch-differences.txt
+
+You now have a text file with the detailed differences for QA documentation.
+
+
+---
+
+10. How git diff supports code quality:
+
+Helps identify unexpected or unreviewed changes
+
+Ensures feature branches only include intended modifications
+
+Essential for code reviews, testing, and QA sign-off
+
+Enables targeted testing by showing exactly what needs verification
+
+Reduces bugs and regressions by highlighting conflicts early
+
+
+
+---
+
+Let me know if you'd like to turn this into a shell script for repeated use or export comparison results into a formatted report!
+
+
+
+Here's a step-by-step Git + GitHub workflow to manage and collaborate on a pull request for the feature-comments branch:
+
+
+---
+
+Collaborating on Pull Requests – Git & GitHub Commands
+
+
+---
+
+1. Create a branch named feature-comments:
+
+git checkout -b feature-comments
+
+
+---
+
+2. Modify comments.js
+
+Make your feature changes in comments.js using your preferred code editor.
+
+
+---
+
+3. Stage and commit changes with issue reference:
+
+git add comments.js
+git commit -m "Added new comment feature (#45)"
+
+
+---
+
+4. Push feature-comments to the remote repository:
+
+git push -u origin feature-comments
+
+
+---
+
+5. Create a Pull Request (PR):
+
+Go to your GitHub repo in the browser:
+
+GitHub will prompt you to “Compare & pull request”
+
+Title: Feature: Add comment system
+
+Description: Mention Closes #45 to link and auto-close the issue
+
+Base: main
+
+Compare: feature-comments
+
+
+
+---
+
+6. Assign the PR to a teammate:
+
+Use the "Reviewers" and "Assignees" section in GitHub
+
+Assign a teammate to review the PR
+
+
+
+---
+
+7. Address review feedback:
+
+Make any requested changes locally, then:
+
+git add .
+git commit -m "Refactored comment feature based on feedback"
+git push
+
+GitHub will automatically update the PR with your new commits.
+
+
+---
+
+8. Approve and merge the PR (once approved):
+
+Click Merge pull request in GitHub
+
+Optionally delete the feature-comments branch after merging
+
+
+
+---
+
+9. Verify merged changes in main:
+
+git checkout main
+git pull origin main
+
+Check that your changes from comments.js exist in the main branch.
+
+
+---
+
+10. Close Issue #45 (if not auto-closed):
+
+If the PR message didn't include Closes #45, close the issue manually in GitHub:
+
+Go to the Issues tab
+
+Locate Issue #45
+
+Click Close issue
+
+
+
+---
+
+Let me know if you want a GitHub Actions workflow added for automatic testing, or a markdown template for pull request descriptions!
+
+
+
+
+Here’s a complete Git command guide for safely setting up and working with backup branches before applying experimental changes:
+
+
+---
+
+Setting Up Backup Branches – Git Commands
+
+
+---
+
+1. Switch to the main branch:
+
+git checkout main
+
+
+---
+
+2. Create a backup branch named backup-main:
+
+git checkout -b backup-main
+
+
+---
+
+3. Push the backup to the remote repository:
+
+git push -u origin backup-main
+
+
+---
+
+4. Switch back to main to begin testing:
+
+git checkout main
+
+
+---
+
+5. Modify index.js with experimental changes
+
+Open index.js in your editor and make changes.
+
+
+---
+
+6. Stage and commit the experimental changes:
+
+git add index.js
+git commit -m "Experimental changes in index.js for testing"
+
+
+---
+
+7. Create a restore branch and merge backup into it:
+
+git checkout -b restore-main
+git merge backup-main
+
+
+---
+
+8. Push the restore-main branch to the cloud:
+
+git push -u origin restore-main
+
+
+---
+
+9. Test restore-main locally:
+
+git checkout restore-main
+# Now check if the files match the original state before the experimental changes
+
+You can also compare with main to confirm:
+
+git diff main..restore-main
+
+
+---
+
+10. Why backup branches matter in development:
+
+Safety Net: Avoids losing stable code when trying risky updates
+
+Isolation: Keeps experiments separate from working versions
+
+Recovery: Quickly revert to known-good state if tests fail
+
+Team Trust: Ensures collaborative work isn’t accidentally overwritten
+
+Audit Trail: Preserves history of important checkpoints
+
+
+
+---
+
+Let me know if you want to automate backup creation with a script or set up Git hooks to remind you to back up before each major change!
